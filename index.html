@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ashish Manani | Technical Project Manager</title>
+<meta name="description" content="Technical Project Manager and Client Delivery Lead with nearly 8 years in software. Leads 13 developers across 4 client projects.">
+<meta property="og:title" content="Ashish Manani | Technical Project Manager">
+<meta property="og:description" content="Technical Project Manager and Client Delivery Lead. Agile delivery, client discovery and hands-on technical depth.">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='20' fill='%230e1726'/%3E%3Ctext x='50' y='68' font-size='54' text-anchor='middle' fill='%236cb6ff' font-family='sans-serif' font-weight='700'%3EAM%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e1726;
+  --panel:#15213a;
+  --line:#25344f;
+  --text:#e7ecf4;
+  --muted:#9aa9c0;
+  --accent:#6cb6ff;
+  --ok:#5fd0a6;
+  --sans:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+@media (prefers-color-scheme:light){
+  :root{
+    --bg:#f5f7fb;
+    --panel:#ffffff;
+    --line:#d5dde9;
+    --text:#142033;
+    --muted:#55657d;
+    --accent:#1f6fd1;
+    --ok:#12805c;
+    color-scheme:light;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:var(--sans);font-size:17px;line-height:1.6;
+  background-image:
+    linear-gradient(var(--line) 1px,transparent 1px),
+    linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:56px 56px;
+  background-position:-1px -1px;
+  background-attachment:fixed;
+}
+body::before{
+  content:"";position:fixed;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 30% 0%,transparent 0%,var(--bg) 75%);
+}
+.wrap{position:relative;max-width:1080px;margin:0 auto;padding:0 24px}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline;text-underline-offset:3px}
+a:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+
+/* top bar */
+.bar{display:flex;justify-content:space-between;align-items:center;padding:22px 0;font-size:15px}
+.bar .mark{font-weight:800;color:var(--text);letter-spacing:-.01em}
+.bar nav{display:flex;gap:22px}
+.bar nav a{color:var(--muted)}
+.bar nav a:hover{color:var(--text);text-decoration:none}
+@media (max-width:640px){.bar nav a:not(.keep){display:none}}
+
+/* hero */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding:56px 0 72px}
+@media (max-width:900px){.hero{grid-template-columns:1fr;gap:40px;padding-top:32px}}
+.hero h1{font-size:clamp(2.4rem,5.4vw,3.7rem);line-height:1.05;letter-spacing:-.03em;margin:0 0 14px;font-weight:800}
+.hero .role{font-size:1.15rem;color:var(--accent);margin:0 0 20px;font-weight:700}
+.hero p.lead{color:var(--muted);max-width:52ch;margin:0 0 28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:11px 20px;border-radius:6px;border:1px solid var(--line);color:var(--text);font-weight:700;font-size:15px;background:var(--panel)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#06101f}
+.btn:hover{text-decoration:none;border-color:var(--accent)}
+.btn.primary:hover{filter:brightness(1.08)}
+.hero .intro{animation:rise .7s ease-out both}
+@keyframes rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+
+/* board */
+.board{
+  position:relative;height:340px;border:1px solid var(--line);border-radius:10px;
+  background:var(--panel);overflow:hidden;font-family:var(--mono);font-size:12.5px;
+}
+.board .cols{position:absolute;inset:0;display:grid;grid-template-columns:repeat(3,1fr)}
+.board .col{border-right:1px solid var(--line);padding:12px 12px 0;color:var(--muted)}
+.board .col:last-child{border-right:0}
+.board .col b{font-weight:500;display:block;padding-bottom:10px}
+.card{
+  position:absolute;width:calc(33.333% - 16px);padding:9px 10px;border-radius:6px;
+  background:var(--bg);border:1px solid var(--line);color:var(--text);line-height:1.35;
+  left:calc(var(--c) * 33.333% + 8px);top:calc(46px + var(--r) * 58px);
+  transition:left .7s cubic-bezier(.4,0,.2,1),top .7s cubic-bezier(.4,0,.2,1),border-color .4s;
+}
+.card.done{border-color:var(--ok)}
+.card.done::after{content:"";position:absolute;right:8px;top:9px;width:6px;height:6px;border-radius:50%;background:var(--ok)}
+.board-caption{margin:10px 2px 0;color:var(--muted);font-size:13.5px}
+@media (max-width:520px){.board{font-size:11px;height:320px}.card{padding:7px 8px}}
+
+/* sections */
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-size:1.7rem;letter-spacing:-.02em;margin:0 0 8px;line-height:1.2}
+.sub{color:var(--muted);margin:0 0 36px;max-width:60ch}
+
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-bottom:0;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+.stats div{padding:22px 22px;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:0}
+.stats strong{display:block;font-size:1.5rem;letter-spacing:-.02em;line-height:1.2}
+.stats span{color:var(--muted);font-size:14.5px}
+@media (max-width:860px){
+  .stats{grid-template-columns:1fr 1fr}
+  .stats div:nth-child(2){border-right:0}
+  .stats div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+}
+
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:28px}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.steps{grid-template-columns:1fr}}
+.steps div{border-top:2px solid var(--accent);padding-top:14px}
+.steps h3{margin:0 0 6px;font-size:1.05rem}
+.steps p{margin:0;color:var(--muted);font-size:15.5px}
+
+.timeline{position:relative;margin:0;padding:0 0 0 26px;list-style:none;border-left:1px solid var(--line)}
+.timeline li{position:relative;padding:0 0 34px}
+.timeline li:last-child{padding-bottom:0}
+.timeline li::before{content:"";position:absolute;left:-32px;top:8px;width:11px;height:11px;border-radius:50%;background:var(--bg);border:2px solid var(--accent)}
+.timeline li.now::before{background:var(--accent)}
+.timeline h3{margin:0;font-size:1.1rem}
+.timeline .when{color:var(--muted);font-size:14.5px;margin:2px 0 8px}
+.timeline p{margin:0;color:var(--muted);max-width:68ch}
+
+.projects{list-style:none;margin:0;padding:0}
+.projects li{display:grid;grid-template-columns:220px 1fr;gap:24px;padding:22px 0;border-top:1px solid var(--line)}
+.projects li:first-child{border-top:0;padding-top:0}
+@media (max-width:700px){.projects li{grid-template-columns:1fr;gap:6px}}
+.projects h3{margin:0;font-size:1.1rem}
+.projects .tag{color:var(--muted);font-size:14.5px}
+.projects p{margin:0;color:var(--muted);max-width:66ch}
+
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:28px 48px}
+@media (max-width:700px){.skills{grid-template-columns:1fr}}
+.skills h3{margin:0 0 6px;font-size:1rem}
+.skills p{margin:0;color:var(--muted);font-size:15.5px}
+
+.two{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+@media (max-width:700px){.two{grid-template-columns:1fr;gap:32px}}
+.two h3{margin:0 0 10px;font-size:1.05rem}
+.two ul{margin:0;padding:0;list-style:none;color:var(--muted);font-size:15.5px}
+.two li{padding:5px 0}
+
+.contact p{max-width:56ch;color:var(--muted);margin:0 0 24px}
+footer{padding:28px 0 44px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .hero .intro{animation:none}
+  .card{transition:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="bar">
+    <span class="mark">Ashish Manani</span>
+    <nav aria-label="Main">
+      <a href="#approach">Approach</a>
+      <a href="#practice">Practice</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a class="keep" href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <div class="intro">
+        <h1>Ashish Manani</h1>
+        <p class="role">Technical Project Manager | Delivery Manager | Client Delivery Lead</p>
+        <p class="lead">I run client projects from first conversation to production release. Clients choose me through a technical interview, I turn their goals into work developers can build, and I keep every release on a clear plan. I came up as a React developer, so I can judge estimates and risks myself.</p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:ashishmanani75@gmail.com">Email me</a>
+          <a class="btn" href="https://linkedin.com/in/ashishmanani-79302015b" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+      <div>
+        <div class="board" id="board" aria-hidden="true">
+          <div class="cols">
+            <div class="col"><b>Backlog</b></div>
+            <div class="col"><b>In progress</b></div>
+            <div class="col"><b>Released</b></div>
+          </div>
+        </div>
+        <p class="board-caption">A typical sprint: work moves left to right, and nothing ships without a plan.</p>
+      </div>
+    </div>
+
+    <div class="stats" role="list">
+      <div role="listitem"><strong>8 years</strong><span>in software, 4+ leading delivery</span></div>
+      <div role="listitem"><strong>13 developers</strong><span>led across 4 client projects</span></div>
+      <div role="listitem"><strong>v1.0.0 to v5.0.1</strong><span>BigDesk, from 2020 to today</span></div>
+      <div role="listitem"><strong>US and UK clients</strong><span>4+ hours of daily overlap</span></div>
+    </div>
+
+    <section id="approach">
+      <h2>How I run a project</h2>
+      <p class="sub">The same four steps on every engagement, whatever the industry.</p>
+      <div class="steps">
+        <div>
+          <h3>Discover</h3>
+          <p>I sit with the client, learn the goal behind the request and work out what really needs building.</p>
+        </div>
+        <div>
+          <h3>Prioritise</h3>
+          <p>We rank the work by impact, agree the order together, and I turn it into a backlog.</p>
+        </div>
+        <div>
+          <h3>Build</h3>
+          <p>I brief developers on the goal, run sprints and daily stand-ups, and send clients a written update every day.</p>
+        </div>
+        <div>
+          <h3>Release</h3>
+          <p>CI/CD, test cases and a staging environment keep releases repeatable. A project document keeps handovers quick.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="practice">
+      <h2>Project management in practice</h2>
+      <p class="sub">The full project lifecycle, as I run it on live client work.</p>
+      <ul class="projects">
+        <li>
+          <div><h3>Initiation</h3><div class="tag">Define the goal</div></div>
+          <p>I start with a technical interview and discovery sessions with the client. We agree the business goal, the scope and what a successful release looks like before any work begins.</p>
+        </li>
+        <li>
+          <div><h3>Planning</h3><div class="tag">Scope, estimates, schedule</div></div>
+          <p>The backlog is ranked with the client by impact and estimated in story points. I plan 1 to 2 week sprints, set milestones and release dates, and assign developers across projects.</p>
+        </li>
+        <li>
+          <div><h3>Execution</h3><div class="tag">Team and client rhythm</div></div>
+          <p>I run daily stand-ups with developers and a daily meeting with each client, followed by a written update. I clear blockers, brief the team on the goal behind each task and run technical reviews.</p>
+        </li>
+        <li>
+          <div><h3>Monitoring and control</h3><div class="tag">Risks, changes, quality</div></div>
+          <p>I track progress against milestones, raise delivery and technical risks early, and agree scope changes with the client before they affect the plan. Each sprint ends with a retrospective. When an Electron.js app failed on Ubuntu 22 because of a kernel issue, I added OS-compatibility checks to every release.</p>
+        </li>
+        <li>
+          <div><h3>Closing and handover</h3><div class="tag">Release and knowledge transfer</div></div>
+          <p>Releases go out through CI/CD with a staging environment and test cases. Each project has a document covering repositories, branches and who worked on what, so a developer change is covered by a short knowledge-transfer session.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="experience">
+      <h2>Experience</h2>
+      <p class="sub">Bigscal Technologies, Surat. Joined in 2019 and grew with the company from 30 to 200+ people.</p>
+      <ol class="timeline">
+        <li class="now">
+          <h3>Project Manager and Client Delivery Lead</h3>
+          <div class="when">2022 to present</div>
+          <p>Lead 13 developers across 4 client projects. I meet each client daily, set priorities with them, manage backlogs and sprints, interview developers for my teams and own releases. All 4 clients I started with in 2022 are still working with me.</p>
+        </li>
+        <li>
+          <h3>Senior React JS Developer</h3>
+          <div class="when">2021</div>
+          <p>Led frontend architecture for enterprise React and Next.js applications, defined API contracts with backend teams and mentored junior developers.</p>
+        </li>
+        <li>
+          <h3>Junior React Native and React JS Developer</h3>
+          <div class="when">2019 to 2020</div>
+          <p>Built mobile and web apps used by 3,000+ people. Named Sr. React JS Developer of the Year in 2020.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <p class="sub">A selection of what I lead or have led.</p>
+      <ul class="projects">
+        <li>
+          <div><h3>BigDesk</h3><div class="tag">B2B SaaS platform</div></div>
+          <p>I built v1.0.0 as a developer in 2020 and have led the product since 2022, now at v5.0.1. I decide what ships and when, manage the team, and set up CI/CD for staging and production with test cases across the frontend, backend and Electron.js repositories.</p>
+        </li>
+        <li>
+          <div><h3>HealthRay</h3><div class="tag">Multi-tenant healthcare SaaS</div></div>
+          <p>Four live production apps (patient, doctor, lab and pharmacy) from one React Native codebase, with real-time ambulance tracking and WebRTC calling. I coordinated releases across all four.</p>
+        </li>
+        <li>
+          <div><h3>Brello</h3><div class="tag">US healthcare</div></div>
+          <p>Started the engagement on my own and grew it into a dedicated in-house team of 5 developers.</p>
+        </li>
+        <li>
+          <div><h3>DOT Audiences and Traffic Popcorn</h3><div class="tag">iGaming advertising</div></div>
+          <p>Lead delivery for DOT Audiences. The client later trusted me with a second project, Traffic Popcorn, where I manage the technical side and the development team.</p>
+        </li>
+        <li>
+          <div><h3>Sotira</h3><div class="tag">Finance marketplace</div></div>
+          <p>A finance product that connects suppliers and buyers on one platform.</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <p class="sub">Delivery first, with enough engineering depth to back it up.</p>
+      <div class="skills">
+        <div>
+          <h3>Project delivery</h3>
+          <p>Scrum, sprint planning, backlog prioritisation, story-point estimation, milestone tracking, scope and risk management, release planning</p>
+        </div>
+        <div>
+          <h3>Clients and team</h3>
+          <p>Requirements gathering, joint prioritisation, expectation setting, daily client updates, developer interviews, mentoring, technical reviews</p>
+        </div>
+        <div>
+          <h3>Tools</h3>
+          <p>Asana, Notion, Jira, AI assistants for documentation and planning</p>
+        </div>
+        <div>
+          <h3>Technical foundation</h3>
+          <p>JavaScript, React, React Native, Next.js, Node.js, REST APIs, MongoDB, PostgreSQL, Jenkins, GitHub Actions, AWS EC2, DigitalOcean, Nginx</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="learning">
+      <div class="two">
+        <div>
+          <h2>Certifications</h2>
+          <ul>
+            <li>Foundations of Project Management</li>
+            <li>Project Initiation: Starting a Successful Project</li>
+            <li>Project Planning: Putting It All Together</li>
+            <li>Project Execution: Running the Project</li>
+            <li>Agile Project Management</li>
+          </ul>
+        </div>
+        <div>
+          <h2>Education</h2>
+          <ul>
+            <li>M.Sc. Information and Communication Technology, Veer Narmad South Gujarat University, 2019</li>
+            <li>BCA, Veer Narmad South Gujarat University, 2017</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <h2>Let’s talk</h2>
+      <p>I’m looking for a project management role where I can grow into a full delivery owner. Open to remote and overseas roles, and willing to relocate.</p>
+      <div class="cta">
+        <a class="btn primary" href="mailto:ashishmanani75@gmail.com">ashishmanani75@gmail.com</a>
+        <a class="btn" href="https://linkedin.com/in/ashishmanani-79302015b" target="_blank" rel="noopener">LinkedIn profile</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>Ashish Manani, Surat, India</footer>
+</div>
+
+<script>
+(function () {
+  var board = document.getElementById('board');
+  var titles = [
+    'Agree scope with client',
+    'Sprint planning',
+    'Staging deploy',
+    'Release notes',
+    'Handover document'
+  ];
+  // Each entry moves one card one column forward.
+  var moves = [0, 1, 0, 2, 1, 3, 2, 4, 3, 4];
+  var cards = [];
+  var colCount = [0, 0, 0];
+  var timer = null;
+  var step = 0;
+
+  function layout() {
+    var rows = [0, 0, 0];
+    cards.forEach(function (c) {
+      c.el.style.setProperty('--c', c.col);
+      c.el.style.setProperty('--r', rows[c.col]++);
+      c.el.classList.toggle('done', c.col === 2);
+    });
+  }
+
+  function build() {
+    titles.forEach(function (t) {
+      var el = document.createElement('div');
+      el.className = 'card';
+      el.textContent = t;
+      board.appendChild(el);
+      cards.push({ el: el, col: 0 });
+    });
+  }
+
+  function reset() {
+    cards.forEach(function (c) { c.col = 0; });
+    layout();
+  }
+
+  function tick() {
+    if (step >= moves.length) {
+      step = 0;
+      timer = setTimeout(function () { reset(); timer = setTimeout(tick, 1400); }, 2600);
+      return;
+    }
+    var c = cards[moves[step++]];
+    if (c.col < 2) c.col++;
+    layout();
+    timer = setTimeout(tick, 1300);
+  }
+
+  build();
+  reset();
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) {
+    cards[0].col = 2; cards[1].col = 2; cards[2].col = 1; cards[3].col = 1;
+    layout();
+    return;
+  }
+  timer = setTimeout(tick, 1200);
+
+  document.addEventListener('visibilitychange', function () {
+    if (document.hidden) { clearTimeout(timer); }
+    else { timer = setTimeout(tick, 800); }
+  });
+})();
+</script>
+</body>
+</html>
